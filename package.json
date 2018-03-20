@@ -1,0 +1,21 @@
+{
+  "name": "Coders-Mingle",
+  "version": "1.0.0",
+  "description": "A mock dating app for developers",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlexHarris-Charlotte/Coders-Mingle.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AlexHarris-Charlotte/Coders-Mingle/issues"
+  },
+  "homepage": "https://github.com/AlexHarris-Charlotte/Coders-Mingle#readme"
+}
