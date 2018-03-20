@@ -16,9 +16,28 @@
             <hr>
             <h3>Answer a few basic questions</h3>
             <h3>Then find the developer with the greatest compatibility</h3>
-            <button class='btn btn-outline-dark btn-lg' style='margin-top:30px;'>Go to Survey</button>
+            <a href='/survey'>
+                <button id='button' class='btn btn-outline-dark btn-lg' style='margin-top:30px;'>Go to Survey</button>
+            </a>
         </main>
         <a href='#'>API Developer List</a> <span> | </span> <a href='#'> Repository</a>
     </div>
+
+    <script>
+        const button = document.querySelector('#button');
+        getSurvey = () => {
+            const xhr = new XMLHttpRequest();
+            xhr.open('GET', '/survey', true);
+            xhr.onload = function () {
+                if (this.status === 200) {
+                    console.log('apples');
+                }
+            }
+            xhr.send();
+        }
+
+        button.addEventListener('click', getSurvey)   
+    </script>
 </body>
 </html>
+

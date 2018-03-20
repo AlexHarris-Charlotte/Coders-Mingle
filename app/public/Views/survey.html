@@ -9,7 +9,7 @@
     <title>Survey</title>
 </head>
 <body>
-    <div class='container'>
+    <div class='container jumbotron'>
         <main>
             <h2>Survey Questions</h2>
             <hr>
@@ -122,7 +122,21 @@
                 <option value="5">5 (Strongly Agree)</option>
             </select>
 
+            <!-- Need to make this link return json from the api/developers route -->
+            <div class='text-center'>
+                <a href='#' class='text-center'>
+                    <button id='button' class='btn btn-outline-dark btn-lg' style='margin-top:30px;'>Submit Survey</button>
+                </a>
+            </div>
         </main>
     </div>
+
+    <script>
+        const subButton = document.querySelector('#button');
+        subButton.addEventListener('click', (event) => {
+            event.preventDefault();
+            alert('hello');
+        })
+    </script>
 </body>
 </html>
