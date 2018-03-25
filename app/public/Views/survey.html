@@ -15,11 +15,11 @@
             <h2>Survey Questions</h2>
             <hr>
             <h3>About You</h3>
-            <p>Name (Required)</p>
+            <p id='labelName'>Name (Required)</p>
             <input class='form-control' type='text' required id='userName'>
             <br>
-            <p>Link to Photo Image (Required)</p>
-            <input class='form-control' type='text' required id='image'>
+            <p id='labelPhoto'>Link to Photo Image (Required)</p>
+            <input class='' type='file' required id='image'>
 
             <hr>
 
@@ -123,7 +123,6 @@
                 <option value="5">5 (Strongly Agree)</option>
             </select>
 
-            <!-- Need to make this link return json from the api/developers route -->
             <div class='text-center'>
                 <a href='/api/developers' class='text-center' style'text-decoration: none !important;'>
                     <button id='button' class='btn btn-outline-dark btn-lg btn-block' style='margin-top:30px;'>Submit Survey</button>
@@ -139,84 +138,6 @@
         </section>
     </div>
 
-    <script>
-        // believe i need to make a post request to api/devs
-        const subButton = document.querySelector('#button');
-        subButton.addEventListener('click', (event) => {
-            event.preventDefault();
-
-            const data = 'apples';
-
-            const scores = [];
-            const userName = document.getElementById('userName').value.trim();
-            const userImage = document.querySelector('#image').value.trim();
-            const questionList = document.querySelectorAll('select');
-            questionList.forEach((curVal) => {scores.push(parseInt(curVal.value))});
-            const totalScore = scores.reduce((acc, curVal) => {
-                return acc += curVal
-            }, 0);
-
-            if (userName && userImage) {
-                const userObj = {
-                    name: userName,
-                    image: userImage,
-                    developerScore: totalScore
-                }
-
-                const xhr = new XMLHttpRequest();
-                xhr.open('POST', '/api/developers', true);
-                xhr.onload = function () {
-                    if (this.status === 200) {
-                        let apiResponse = JSON.parse(this.responseText);
-                        console.log(apiResponse);
-                        createModal(apiResponse);
-                    }
-                }
-                xhr.setRequestHeader('Content-type', 'application/json;charset=UTF-8');
-                xhr.send(JSON.stringify(userObj));
-            } else {
-                alert('Please complete both the name and image forms before submitting.');
-            } 
-
-        });
-
-        responseData = () => {
-
-        }
-
-        createModal = (results) => {
-            const infoText = document.createElement("p");
-            const modal = document.querySelector("#modal");
-            const modalContent = document.querySelector("#modal-content");
-            const imgTag = document.createElement("img");
-            const nameEle = document.createElement("h3");
-            const nameText = document.createTextNode(results[1].name);
-            const quoteEle = document.createElement('p');
-            const quoteText = document.createTextNode(results[1].quote);
-
-            // need to style images for consistency
-
-            modal.style.display = "block";
-            infoText.appendChild(document.createTextNode("You're Closest Match"));
-            quoteEle.appendChild(quoteText);
-            modalContent.insertBefore(infoText,closeButton);
-            modalContent.insertBefore(nameEle, closeButton);
-            modalContent.insertBefore(imgTag, closeButton);
-            modalContent.insertBefore(quoteEle, closeButton)
-            nameEle.appendChild(nameText);
-            imgTag.setAttribute('src', results[1].image);
-            imgTag.style.height = '300px';
-            imgTag.style.width = '300px';
-            imgTag.style.margin = 'auto';
-
-
-        }
-
-        const closeButton = document.querySelector("#close");
-
-        closeButton.addEventListener('click', () => {
-            modal.style.display = 'none';
-        });
-    </script>
+    <script src='/JS/survey.js'> </script>
 </body>
 </html>

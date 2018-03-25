@@ -2,7 +2,7 @@
 const developers = [
     {
         name: 'Daved Kawashner',
-        image: '../../images/David.jpg',
+        image: '../images/David.jpg',
         quote: 'Eyy gurl, you ever heard of Gastonia? I like Pop Tarts',
         developerScore: 10
     },

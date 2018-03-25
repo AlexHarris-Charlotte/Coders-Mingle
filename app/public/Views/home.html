@@ -23,21 +23,7 @@
         <a href='/api/developers'>API Developer List</a> <span> | </span> <a href='https://github.com/AlexHarris-Charlotte/Coders-Mingle'> Repository</a>
     </div>
 
-    <script>
-        const button = document.querySelector('#button');
-        getSurvey = () => {
-            const xhr = new XMLHttpRequest();
-            xhr.open('GET', '/survey', true);
-            xhr.onload = function () {
-                if (this.status === 200) {
-                    console.log('apples');
-                }
-            }
-            xhr.send();
-        }
-
-        button.addEventListener('click', getSurvey)   
-    </script>
+    <script src='/JS/home.js'> </script>
 </body>
 </html>
 
