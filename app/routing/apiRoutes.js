@@ -1,16 +1,19 @@
 const express = require('express');
 const path = require('path');
+const bodyParser = require('body-parser');
 const app = express();
-const router = express.Router();
+const data = require('../data/developers.js')
 
 module.exports = function(app) {
-    app.get('/api/developers', (req, res) => {
-        // need to return JSON file from friends js
-        res.sendFile(path.join(__dirname + '/../public/Views/survey.html'));
+    app.post('/api/developers', (req, res) => {
+        data.push(req.body);
+        res.json(data);
+        //
     })
     
-    app.get('/', (req, res) => {
-        res.sendFile(path.join(__dirname + '/../public/Views/home.html'))
-    })  
-    
+    app.get('/api/developers', (req, res) => {
+        res.json(data);
+    })
+
+
 }
